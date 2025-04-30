@@ -1,8 +1,5 @@
 import 'dart:ffi';
 import 'dart:typed_data';
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 
 import 'senraise_printer_platform_interface.dart';
 
