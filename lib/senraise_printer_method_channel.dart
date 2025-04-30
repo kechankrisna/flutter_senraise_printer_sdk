@@ -32,7 +32,7 @@ class MethodChannelSenraisePrinter extends SenraisePrinterPlatform {
   }
   @override
   Future<Void?> printBarCode(String data, int symbology, int height, int width) async{
-    await methodChannel.invokeMethod<String>('printPic',{"data":data,"symbology":symbology,"height":height,"width":width});
+    await methodChannel.invokeMethod<String>('printBarCode',{"data":data,"symbology":symbology,"height":height,"width":width});
   }
   @override
   Future<Void?> printQRCode(String data, int modulesize, int errorlevel) async{
@@ -73,5 +73,14 @@ class MethodChannelSenraisePrinter extends SenraisePrinterPlatform {
   @override
   Future<Void?> setCode(String code) async{
     await methodChannel.invokeMethod<String>('setCode',{"code":code});
+  }
+
+  @override
+  Future<Void?> printTableText(List<String> text, List<int> weight, List<int> alignment) async {
+    await methodChannel.invokeMethod<String>('printTableText', {
+      "text": text,
+      "weight": weight,
+      "alignment": alignment
+    });
   }
 }

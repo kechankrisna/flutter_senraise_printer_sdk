@@ -1,4 +1,3 @@
-
 import 'dart:ffi';
 import 'dart:typed_data';
 import 'dart:ui';
@@ -54,5 +53,9 @@ class SenraisePrinter {
   }
   Future<Void?> setCode(String code) {
     return SenraisePrinterPlatform.instance.setCode(code);
+  }
+
+  Future<Void?> printTableText(List<String> text, List<int> weight, List<int> alignment) {
+    return SenraisePrinterPlatform.instance.printTableText(text, weight, alignment);
   }
 }

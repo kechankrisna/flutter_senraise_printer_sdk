@@ -84,4 +84,7 @@ abstract class SenraisePrinterPlatform extends PlatformInterface {
     throw UnimplementedError('setCode() has not been implemented.');
   }
 
+  Future<Void?> printTableText(List<String> text, List<int> weight, List<int> alignment) {
+    throw UnimplementedError('printTableText() has not been implemented.');
+  }
 }

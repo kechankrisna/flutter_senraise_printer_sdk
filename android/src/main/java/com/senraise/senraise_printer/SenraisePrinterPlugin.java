@@ -13,6 +13,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
@@ -105,6 +106,12 @@ public class SenraisePrinterPlugin implements FlutterPlugin, MethodCallHandler {
             }else if (call.method.equals("setCode")) {
                 printerInterface.setCode(call.argument("code"));
                 result.success("setCode success");
+            }else if (call.method.equals("printTableText")) {
+                String[] text = ((List<String>)call.argument("text")).toArray(new String[0]);
+                int[] weight = ((List<Integer>)call.argument("weight")).stream().mapToInt(Integer::intValue).toArray();
+                int[] alignment = ((List<Integer>)call.argument("alignment")).stream().mapToInt(Integer::intValue).toArray();
+                printerInterface.printTableText(text, weight, alignment);
+                result.success("printTableText success");
             }else {
                 result.notImplemented();
             }
