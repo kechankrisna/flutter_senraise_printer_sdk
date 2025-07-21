@@ -30,5 +30,5 @@ example/pubspec.lock
 .packages
 build/
 
-# CXX build directory
-example/android/app/.cxx/
+# FVM Version Cache
+.fvm/

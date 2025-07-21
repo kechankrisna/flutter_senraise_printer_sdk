@@ -137,50 +137,26 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Printer Demo'),
         ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Printer Demo',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: printBasicText,
-                child: const Text('Print Basic Text'),
-              ),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: printFormattedText,
-                child: const Text('Print Formatted Text'),
-              ),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: printTable,
-                child: const Text('Print Table'),
-              ),              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: printQRCode,
-    
-            child: const Text('Print QR Code'),
-              ),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: printBarcode,
-                child: const Text('Print Barcode'),
-              ),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: printReceipt,
-                child: const Text('Print Sample Receipt'),
-              ),
-            ],
-          ),
+        body: Center(
+          child: TextButton(
+              onPressed: () async {
+                print("start");
+                var testdata = (await rootBundle.load('images/test.png'))
+                    .buffer
+                    .asUint8List();
+                await _senraisePrinterPlugin.printPic(testdata);
+
+                var receiptdata = (await rootBundle.load('images/receipt.png'))
+                    .buffer
+                    .asUint8List();
+                await _senraisePrinterPlugin.printPic(receiptdata);
+                print("end");
+                // await _senraisePrinterPlugin.setTextBold(true);
+                // await _senraisePrinterPlugin.setTextSize(96);
+                // await _senraisePrinterPlugin.printText("123\n");
+                // await _senraisePrinterPlugin.printText("សួស្តីអ្នកទាំងអស់គ្នា\n");
+              },
+              child: Text("clickkkkk")),
         ),
       ),
     );
